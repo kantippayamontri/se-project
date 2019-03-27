@@ -1,0 +1,27 @@
+.carousel-item {
+  height: 100vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.col-centered {
+  float: none;
+  margin: 0 auto;
+}
+
+.main-form {
+  width: 450px;
+  margin: auto;
+}
+
+body {
+  background: url('https://mdbootstrap.com/img/Photos/Others/images/91.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
