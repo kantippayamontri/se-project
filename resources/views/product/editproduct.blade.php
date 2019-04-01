@@ -1,11 +1,11 @@
 @extends('layouts.app')
-@section('title','Add Product')
+@section('title','Edit Product')
 @section('content')
 
 <form method="post" action="{{url('/product/store')}}" class="main-form" enctype="multipart/form-data">
     {{csrf_field()}}
     <br>
-    <h2>Add Product</h2>
+    <h2>Edit Product</h2>
     @if(count($errors) > 0)
     <!-- กรณีผิดพลาด -->
     <div class="alert alert-danger">
@@ -27,26 +27,26 @@
     <br>
     <div class="form-group">
         <label for="name">Name:</label>
-        <input type="text" class="form-control" id="name" name="name">
+        <input type="text" class="form-control" id="name" name="name" value="{{$product->name}}"/>
     </div>
     <div class="form-group">
         <label for="price">Price:</label>
-        <input class="form-control" type="number" id="price" name="price">
+        <input class="form-control" type="number" id="price" name="price" value="{{$product->price}}">
     </div>
     <div class="form-group">
         <label for="point">Point:</label>
-        <input class="form-control" type="number" id="point" name="point">
+        <input class="form-control" type="number" id="point" name="point" value="{{$product->point}}"/>
     </div>
     <div class="input-group mb-3">
         <div class="input-group-prepend">
             <label class="input-group-text" for="category">category</label>
         </div>
-        <select class="custom-select" id="category" name="category">
-            <option selected>Choose...</option>
-            <option value="1" name='drink'>drink</option>
-            <option value="2" name='snack'>Snack</option>
-            <option value="3" name='noodle'>Instant noodle</option>
-            <option value="4" name='general'>general</option>
+        <select class="custom-select" id="category" name="category" value="{{$product->category}}">
+    
+            <option value="1" name='drink' <?php if($product->category=="1") echo 'selected="selected"'; ?> >drink</option>
+            <option value="2" name='snack'<?php if($product->category=="2") echo 'selected="selected"'; ?> >Snack</option>
+            <option value="3" name='noodle'<?php if($product->category=="3") echo 'selected="selected"'; ?> >Instant noodle</option>
+            <option value="4" name='general'<?php if($product->category=="4") echo 'selected="selected"'; ?> >general</option>
         </select>
     </div>
 
@@ -58,7 +58,7 @@
     </div>
 
     <div class="form-group">
-        <input type="submit" class="btn btn-primary" value="ADD" />
+        <input type="submit" class="btn btn-primary" value="UPDATE" />
     </div>
 
 

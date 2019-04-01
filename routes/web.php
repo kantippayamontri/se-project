@@ -15,10 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/addproduct', function () {
-    return view('addproduct');
-});
-
 
 // Route::get('/', function () {
 //     return view('firstpage');
@@ -30,8 +26,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/product', 'ProductController@index');
 
+Route::get('/product/add', 'ProductController@create');
+Route::post('/product/store', 'ProductController@store');
 
-
+Route::delete('/product/delete/{id}', 'ProductController@destroy');
+Route::get('/product/edit/{id}', 'ProductController@edit');
 //Route for normal user
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index');

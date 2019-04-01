@@ -10,13 +10,19 @@
         <small>products</small>
     </h1>
 
+    @if (session('success'))
+    <div class="alert alert-success">
+        <p>{{ session('success') }}</p>
+    </div>
+    @endif
+
     @guest
     @else
     @if (auth()->user()->isAdmin())
     <div class="row">
         <div class="col-11"></div>
         <div class="col-1">
-            <button type="button" class="btn btn-success" href="/addproduct">Add</button>
+            <a class="btn btn-success" href="/product/add">Add</a>
         </div>
     </div>
     <br>
@@ -49,8 +55,14 @@
                     @if (auth()->user()->isAdmin())
                     <br>
                     <center>
-                        <button type="button" class="btn btn-warning">Edit</button>
-                        <button type="button" class="btn btn-danger">Delete</button>
+                        <!-- <button type="button" class="btn btn-warning">Edit</button> -->
+                        <a href="{{ url('/product/edit' , $row['id']) }}" class="btn btn-warning">Edit</a>
+
+                        <form method="post" class="delete_form" action="{{ url('/product/delete' , $row['id']) }}">
+                            {{csrf_field()}}
+                            <input type="hidden" name="_method" value="DELETE" />
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
                     </center>
 
                     @else
@@ -77,7 +89,18 @@
 
     </div>
 
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.delete_form').on('submit', function() {
+                if (confirm("Do you want to delete this product?")) {
+                    return true;
+                } else {
+                    return false;
+                }
+            });
 
+        });
+    </script>
     <!-- /.container -->
 
     @endsection 
