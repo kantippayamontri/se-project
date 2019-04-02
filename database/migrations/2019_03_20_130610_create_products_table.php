@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->double('price')->default(0);
             $table->integer('point')->default(0);
             $table->integer('category');
-            $table->string('picture');
+            $table->string('picture')->default('no.png');
             $table->timestamps();
         });
     }

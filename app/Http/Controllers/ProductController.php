@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use Intervention\Image\Facades\Image as Image;
+use Illuminate\Support\Facades\Storage;
 
 
 class ProductController extends Controller
@@ -46,9 +47,9 @@ class ProductController extends Controller
             'price' => 'required',
             'point' => 'required',
             'category' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-
+        $new_name='no.png';
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $new_name = time() . '.' . $image->getClientOriginalExtension();
@@ -92,7 +93,7 @@ class ProductController extends Controller
         //
         $product = Product::find($id);
         //dd($id);
-        return view('product.editproduct' , compact('product','id'));
+        return view('product.editproduct', compact('product', 'id'));
     }
 
     /**
@@ -105,6 +106,37 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         //
+        //dd($id);
+        $this->validate($request, [
+            'name' => 'required',
+            'price' => 'required',
+            'point' => 'required',
+            'category' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+        $new_name = "";
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $new_name = time() . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(450, 400)->save(public_path('picture/product/' . $new_name));
+            $product = Product::find($id);
+            $product->name = $request->get('name');
+            $product->price = $request->get('price');
+            $product->point = $request->get('point');
+            $product->category = $request->get('category');
+            $oldpruductname = $product->picture;
+            $product->picture = $new_name;
+            Storage::delete('product/'.$oldpruductname);
+        } else {
+            $product = Product::find($id);
+            $product->name = $request->get('name');
+            $product->price = $request->get('price');
+            $product->point = $request->get('point');
+            $product->category = $request->get('category');
+        }
+
+        $product->save();
+        return back()->with('success', 'Edit data success');
     }
 
     /**
@@ -116,11 +148,11 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
-       //dd($id);
-       $product = Product::find($id);
-       $product_name = $product['name'];
-       $product->delete();
+        //dd($id);
+        $product = Product::find($id);
+        $product_name = $product['name'];
+        $product->delete();
 
-       return back()->with('success' , $product_name .' has deleted.');
+        return back()->with('success', $product_name . ' has deleted.');
     }
 }

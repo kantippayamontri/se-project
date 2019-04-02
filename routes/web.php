@@ -31,6 +31,9 @@ Route::post('/product/store', 'ProductController@store');
 
 Route::delete('/product/delete/{id}', 'ProductController@destroy');
 Route::get('/product/edit/{id}', 'ProductController@edit');
+Route::patch('/product/update/{id}','ProductController@update');
+
+
 //Route for normal user
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index');

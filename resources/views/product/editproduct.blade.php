@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('title','Edit Product')
 @section('content')
-
-<form method="post" action="{{url('/product/store')}}" class="main-form" enctype="multipart/form-data">
+<!-- action="{{url('/product/store')}}" -->
+<form method="post" action="{{ url('/product/update' ,$id) }}" class="main-form" enctype="multipart/form-data">
     {{csrf_field()}}
     <br>
     <h2>Edit Product</h2>
@@ -52,12 +52,13 @@
 
     <div class="form-group">
         <label> Choose file for upload: </label><br>
-        <input type="file" name="image" />
+        <input type="file" name="image"/>
         <span class="text-muted">jpg, png, gif</span><br><br>
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
     </div>
 
     <div class="form-group">
+        <input type="hidden" name="_method" value="PATCH" />
         <input type="submit" class="btn btn-primary" value="UPDATE" />
     </div>
 
