@@ -151,7 +151,9 @@ class ProductController extends Controller
         //dd($id);
         $product = Product::find($id);
         $product_name = $product['name'];
+        $oldpruductname = $product->picture;
         $product->delete();
+        Storage::delete('product/'.$oldpruductname);
 
         return back()->with('success', $product_name . ' has deleted.');
     }

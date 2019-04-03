@@ -29,7 +29,7 @@
                         </ul>
 
                         <!-- <a href="#" class="btn btn-block btn-primary text-uppercase">Edit</a> -->
-                        
+                        <a href="{{ url('/user/edit' , $row['id']) }}" class="btn btn-warning btn-block text-uppercase">Edit</a>
 
                         @if (Auth::user()->id !== $row['id'])
                         <form method="post" class="delete_form" action="{{ url('/user/delete' , $row['id']) }}">
@@ -46,5 +46,18 @@
         </div>
     </div>
 </section>
+
+<script type="text/javascript">
+        $(document).ready(function() {
+            $('.delete_form').on('submit', function() {
+                if (confirm("Do you want to delete this product?")) {
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+
+        });
+</script>
 
 @endsection 

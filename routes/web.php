@@ -17,9 +17,9 @@ Route::get('/', function () {
 
 
 //------test-----
-Route::get('/user', function () {
-    return view('user.index');
-});
+ Route::get('/user/edit', function () {
+     return view('user.edit');
+ });
 
 //register
 Route::post('/register/store', 'Auth\RegisterController@store');
@@ -30,16 +30,16 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //user
+
+Route::get('/user/edit/{id}', 'HomeController@edit');
 Route::delete('/user/delete/{id}', 'HomeController@destroy');
 Route::get('/user', 'HomeController@index_for_page');
-
+Route::patch('/user/update/{id}','HomeController@update');
 //product
 
 Route::get('/product', 'ProductController@index');
-
 Route::get('/product/add', 'ProductController@create');
 Route::post('/product/store', 'ProductController@store');
-
 Route::delete('/product/delete/{id}', 'ProductController@destroy');
 Route::get('/product/edit/{id}', 'ProductController@edit');
 Route::patch('/product/update/{id}','ProductController@update');
