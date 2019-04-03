@@ -21,6 +21,8 @@ Route::get('/user', function () {
     return view('user.index');
 });
 
+//register
+Route::post('/register/store', 'Auth\RegisterController@store');
 
 
 Auth::routes();

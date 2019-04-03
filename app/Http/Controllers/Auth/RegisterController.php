@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Intervention\Image\Facades\Image as Image;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -61,18 +63,47 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        if ($data->hasFile('image')) {
-        dd($data);
-        }else{
-            echo 'dont have file';
-        }
-        /*return User::create([
+
+        return User::create([
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'name' => $data['name'],
             'description' => $data['description'],
             'type' => User::DEFAULT_TYPE,
-        ]);*/
+            'picture' => $data['image'],
+        ]);
     }
+
+    public function store(Request $request){
+       // dd($request);
+        $this->validate($request, [
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $new_name='no.png';
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $new_name = time() . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(450, 400)->save(public_path('picture/user/' . $new_name));
+        }
+
+        $user = new User([
+
+            'email' => $request->get('email'),
+            'password' =>  Hash::make($request->get('password')),
+            'name' => $request->get('name'),
+            'description' => $request->get('description'),
+            'type' => User::DEFAULT_TYPE,
+            'picture' =>$new_name,
+
+        ]);
+
+        $user->save();
+
+        return back()->with('success', 'success');
+
+    }
+
+
     
 }
