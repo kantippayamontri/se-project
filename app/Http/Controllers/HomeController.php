@@ -38,4 +38,15 @@ class HomeController extends Controller
         return view('user.index', compact('user'));
     }
 
+    public function destroy($id){
+        //dd($id);
+
+        $user = User::find($id);
+        $user_name = $user['email'];
+        $user->delete();
+
+        return back()->with('success', $user_name . ' has deleted.');
+
+    }
+
 }

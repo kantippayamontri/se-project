@@ -30,7 +30,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //user
-
+Route::delete('/user/delete/{id}', 'HomeController@destroy');
 Route::get('/user', 'HomeController@index_for_page');
 
 //product
