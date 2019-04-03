@@ -16,13 +16,22 @@ Route::get('/', function () {
 });
 
 
-// Route::get('/', function () {
-//     return view('firstpage');
-// });
+//------test-----
+Route::get('/user', function () {
+    return view('user.index');
+});
+
+
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//user
+
+Route::get('/user', 'HomeController@index_for_page');
+
+//product
 
 Route::get('/product', 'ProductController@index');
 

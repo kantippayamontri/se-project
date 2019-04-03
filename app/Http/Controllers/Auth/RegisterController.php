@@ -61,13 +61,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        if ($data->hasFile('image')) {
+        dd($data);
+        }else{
+            echo 'dont have file';
+        }
+        /*return User::create([
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'name' => $data['name'],
             'description' => $data['description'],
             'type' => User::DEFAULT_TYPE,
-        ]);
+        ]);*/
     }
     
 }

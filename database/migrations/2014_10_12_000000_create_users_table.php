@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->double('money')->default(0);
             $table->double('point')->default(0);
             $table->boolean('type')->default(0); //admin or user
+            $table->string('picture')->default('no.png');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -32,7 +32,7 @@
     <div class="row">
 
         @foreach($product as $row)
-        <div class="col-lg-3 col-sm-6 mb-4">
+        <div class="pricing col-lg-3 col-sm-6 mb-4">
             <div class="card h-100">
                 <a href="#"><img class="card-img-top" src="{{ url( 'picture/product/'.$row['picture'] ) }}" alt="" width="100px"></a>
                 <div class="card-body">
@@ -66,11 +66,13 @@
                     </center>
 
                     @else
-                    <div class="row">
-                        <div class="col-lg-1 col-centered">
+                    <!-- <div class="row"> -->
+                        <!-- <div class="col-lg-1 col-centered"> -->
+                        <center>
                             <button type="button btn-lg" class="btn btn-success">BUY</button>
-                        </div>
-                    </div>
+                        </center>
+                        <!-- </div> -->
+                    <!-- </div> -->
                     @endif
 
 
