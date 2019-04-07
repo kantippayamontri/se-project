@@ -2,6 +2,14 @@
 @section('title','User')
 @section('content')
 
+<style>
+    .card {
+        margin: 0 auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+}
+</style>
+
 <section class="pricing py-5">
     <div class="container">
         @if (session('success'))
@@ -14,7 +22,7 @@
             <!-- Free Tier -->
             <div class="col-lg-4">
                 <div class="card mb-5 mb-lg-0">
-                    <div class="card-body">
+                    <div class="card-body ">
 
                         <h6 class="card-price text-center">
                             <a href="#"><img class="card-img-top" src="{{ url( 'picture/user/'.$row['picture'] ) }}" alt="" width="100px"></a>
