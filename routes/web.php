@@ -10,6 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//cart
+Route::patch('/cart/plus/{id}','CartController@plus');
+Route::patch('/cart/minus/{id}','CartController@minus');
+Route::delete('/cart/delete/{id}', 'CartController@destroy');
+Route::get('/cart', 'CartController@index')->name('cart');;
+Route::post('/cart/store/{id}', 'CartController@store');
 
 Route::get('/', function () {
     return view('welcome');

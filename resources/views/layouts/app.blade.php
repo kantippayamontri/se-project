@@ -48,6 +48,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/product">{{ __('Product') }}</a>
                         </li>
+                        
 
                         @guest
                         <li class="nav-item">
@@ -63,6 +64,13 @@
                         @if (auth()->user()->isAdmin())
                         <li class="nav-item">
                             <a class="nav-link" href="/user">{{ __('User') }}</a>
+                        </li>
+                        @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="/cart">{{ __('Cart') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">{{Auth::user()->money}}</a>
                         </li>
                         @endif
                         <li class="nav-item dropdown">

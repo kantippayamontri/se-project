@@ -19,7 +19,13 @@ class ProductController extends Controller
     {
         //เข้าก่อน
         $product = Product::all()->toArray();
-        return view('product', compact('product'));
+
+        if(is_null(auth()->user()) || auth()->user()->isAdmin() ){
+            return view('product', compact('product'));
+        }else{
+            return view('user.product' ,compact('product') );
+        }
+        
     }
 
     /**
