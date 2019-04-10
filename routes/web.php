@@ -10,6 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//history
+Route::get('/history/store/{total_price}/{total_point}', 'HistoryController@store');
 //cart
 Route::patch('/cart/plus/{id}','CartController@plus');
 Route::patch('/cart/minus/{id}','CartController@minus');
@@ -36,7 +39,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //user
-
+Route::get('/user/profile', 'HomeController@profile')->name('profile');
 Route::get('/user/edit/{id}', 'HomeController@edit');
 Route::delete('/user/delete/{id}', 'HomeController@destroy');
 Route::get('/user', 'HomeController@index_for_page');

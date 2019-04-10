@@ -21,9 +21,9 @@
         <th scope="col">Delete</th>
     </thead>
     <tbody>
-        <?php $total = 0; ?>
+        <?php $total = 0; $total_point=0; ?>
         @foreach($cart as $row)
-        <?php $total += $row['total_price']; ?>
+        <?php $total += $row['total_price']; $total_point += $row['total_point']; ?>
         <tr class="table-info">
             <th scope="col">{{$row['name']}}</th>
             <th scope="col">{{$row['price']}}</th>
@@ -58,7 +58,6 @@
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
             </th>
-
         </tr>
         @endforeach
 
@@ -104,7 +103,7 @@
 <div class="row">
     <div class="col"></div>
     <div class="col">
-        <a href="{{ url('' ,) }}" class="btn btn-success">Check out</a>
+        <a href="{{ url('/history/store' , [$total ,$total_point]) }}" class="btn btn-success">Check out</a>
     </div>
     <div class="col"></div>
 </div>

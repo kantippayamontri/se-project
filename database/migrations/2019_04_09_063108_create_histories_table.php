@@ -15,6 +15,13 @@ class CreateHistoriesTable extends Migration
     {
         Schema::create('histories', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('cart');
+            $table->dateTime('time');
+            $table->integer('user_id');
+            $table->string('name');
+            $table->integer('quantity');
+            $table->integer('total_price');
+            $table->integer('total_point');
             $table->timestamps();
         });
     }

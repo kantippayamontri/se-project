@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image as Image;
+use App\History;
 
 class HomeController extends Controller
 {
@@ -34,6 +35,15 @@ class HomeController extends Controller
         } else {
             return view('home');
         }
+    }
+
+    public function profile(){
+
+        $currentuser = app('Illuminate\Contracts\Auth\Guard')->user();
+        $user = User::find($currentuser->id)->toArray();
+        $history = History::where('user_id', $currentuser->id)->get();
+        //dd($history);
+        return view('user.profile' , compact('user' , 'history'));
     }
 
     public function index_for_page(){
