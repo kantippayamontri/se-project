@@ -61,6 +61,10 @@
                         @endif
                         @else
 
+                        <li class="nav-item">
+                            <a class="nav-link" href="/promotion">{{ __('Promotion') }}</a>
+                        </li>
+
                         @if (auth()->user()->isAdmin())
                         <li class="nav-item">
                             <a class="nav-link" href="/user">{{ __('User') }}</a>

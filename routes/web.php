@@ -11,6 +11,16 @@
 |
 */
 
+//promotion
+Route::patch('/promotion/update/{id}','PromotionController@update');
+Route::get('/promotion/edit/{id}', 'PromotionController@edit')->name('promotion.edit');
+Route::get('/promotion', 'PromotionController@index')->name('promotion.index');
+Route::post('/promotion/store', 'PromotionController@store');
+Route::get('/promotion/add', function () {
+    return view('promotion.addpromotion');
+});
+Route::get('/promotion/delete/{id}' , 'PromotionController@destroy')->name('promotion.delete');
+
 //history
 Route::get('/history/store/{total_price}/{total_point}', 'HistoryController@store');
 //cart
