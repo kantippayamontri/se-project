@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Cart;
 use App\User;
 use App\History;
+use App\Coupon;
 
 class HistoryController extends Controller
 {
@@ -35,7 +36,7 @@ class HistoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($total_price , $total_point)
+    public function store($total_price, $total_point, $coupon_id)
     {
         //return view('welcome');
 
@@ -57,7 +58,7 @@ class HistoryController extends Controller
                 'time' => $his_cart,
                 'user_id' => $currentuser->id,
                 'name' => $data->name,
-                'quantity' => $data ->quantity,
+                'quantity' => $data->quantity,
                 'total_price' => $data->total_price,
                 'total_point' => $data->total_point,
             ]);
@@ -65,15 +66,20 @@ class HistoryController extends Controller
             //delete data in cart 
             $already_save = Cart::find($data->id);
             $already_save->delete();
-
         }
+
+        if ($coupon_id !== 0) {
+            $coupon = Coupon::find($coupon_id);
+            $coupon->delete();
+        }
+
 
         //money and point of user must change
         $user = User::find($currentuser->id);
         $user->money -= $total_price;
         $user->point += $total_point;
         $user->save();
-        
+
 
 
         return redirect()->route('cart');

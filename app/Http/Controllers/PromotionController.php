@@ -138,7 +138,7 @@ class PromotionController extends Controller
             $promotion->name = $request->get('name');
             $promotion->description = $request->get('description');
             $promotion->number = $request->get('number');
-            $promotion->min_money = $reqgituest->get('min_money');
+            $promotion->min_money = $request->get('min_money');
             $promotion->percent = $request->get('percent');
             $promotion->discount = $request->get('discount');
             $promotion->point = $request->get('point');

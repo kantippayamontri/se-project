@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image as Image;
 use App\History;
+use App\Coupon;
 
 class HomeController extends Controller
 {
@@ -42,8 +43,9 @@ class HomeController extends Controller
         $currentuser = app('Illuminate\Contracts\Auth\Guard')->user();
         $user = User::find($currentuser->id)->toArray();
         $history = History::where('user_id', $currentuser->id)->get();
+        $coupon = Coupon::where('user_id', $currentuser->id)->get();
         //dd($history);
-        return view('user.profile' , compact('user' , 'history'));
+        return view('user.profile' , compact('user' , 'history' , 'coupon'));
     }
 
     public function index_for_page(){

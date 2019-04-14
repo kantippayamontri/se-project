@@ -11,6 +11,12 @@
 |
 */
 
+
+
+//coupon
+Route::get('/coupon/store/{id}', 'CouponController@store')->name('coupon.store');
+Route::post('/coupon/check/{total}', 'CouponController@check')->name('coupon.check');
+
 //promotion
 Route::patch('/promotion/update/{id}','PromotionController@update');
 Route::get('/promotion/edit/{id}', 'PromotionController@edit')->name('promotion.edit');
@@ -22,7 +28,7 @@ Route::get('/promotion/add', function () {
 Route::get('/promotion/delete/{id}' , 'PromotionController@destroy')->name('promotion.delete');
 
 //history
-Route::get('/history/store/{total_price}/{total_point}', 'HistoryController@store');
+Route::get('/history/store/{total_price}/{total_point}/{coupon_id}', 'HistoryController@store');
 //cart
 Route::patch('/cart/plus/{id}','CartController@plus');
 Route::patch('/cart/minus/{id}','CartController@minus');
