@@ -11,7 +11,19 @@
 |
 */
 
+//out of stock
 
+//vote
+Route::get('/vote/addtoproduct/{id}', 'VoteController@add_to_product')->name('vote.addtoproduct');
+Route::get('/vote/vote/{id}', 'VoteController@vote_')->name('vote.vote');
+Route::delete('/vote/delete/{id}', 'VoteController@destroy');
+Route::get('/vote', 'VoteController@index')->name('vote.index');
+Route::patch('/vote/update/{id}','VoteController@update');
+Route::get('/vote/edit/{id}', 'VoteController@edit')->name('vote.edit');
+Route::post('/vote/store', 'VoteController@store');
+Route::get('/vote/add', function () {
+    return view('vote.add');
+});
 
 //coupon
 Route::get('/coupon/store/{id}', 'CouponController@store')->name('coupon.store');
