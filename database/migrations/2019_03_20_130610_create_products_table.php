@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->integer('point')->default(0);
             $table->integer('category');
             $table->string('picture')->default('no.png');
+            $table->integer('out_of_stock')->default(0);
             $table->timestamps();
         });
     }

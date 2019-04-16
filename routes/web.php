@@ -12,6 +12,13 @@
 */
 
 //out of stock
+Route::get('/out_of_stock/store/{id}', 'Out_of_stockController@store');
+Route::delete('/out_of_stock/delete/{id}', 'Out_of_stockController@destroy');
+Route::patch('/out_of_stock/update/{id}','Out_of_stockController@update');
+Route::get('/out_of_stock/edit/{id}', 'Out_of_stockController@edit');
+Route::get('/out_of_stock', 'Out_of_stockController@index');
+Route::get('/out_of_stock/tell/{id}', 'Out_of_stockController@tell')->name('out_of_stock.tell');
+
 
 //vote
 Route::get('/vote/addtoproduct/{id}', 'VoteController@add_to_product')->name('vote.addtoproduct');
@@ -72,8 +79,8 @@ Route::get('/user/edit/{id}', 'HomeController@edit');
 Route::delete('/user/delete/{id}', 'HomeController@destroy');
 Route::get('/user', 'HomeController@index_for_page');
 Route::patch('/user/update/{id}','HomeController@update');
-//product
 
+//product
 Route::get('/product', 'ProductController@index');
 Route::get('/product/add', 'ProductController@create');
 Route::post('/product/store', 'ProductController@store');

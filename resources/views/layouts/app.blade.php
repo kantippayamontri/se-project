@@ -61,9 +61,7 @@
                         @endif
                         @else
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="/">{{ __('Out of stock') }}</a>
-                        </li>
+                        
 
                         <li class="nav-item">
                             <a class="nav-link" href="/promotion">{{ __('Promotion') }}</a>
@@ -74,6 +72,11 @@
                         </li>
 
                         @if (auth()->user()->isAdmin())
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/out_of_stock">{{ __('Out of stock') }}</a>
+                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="/user">{{ __('User') }}</a>
                         </li>

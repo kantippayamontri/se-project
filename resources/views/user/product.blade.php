@@ -16,6 +16,12 @@
     </div>
     @endif
 
+    @if (session('test'))
+    <div class="alert alert-success">
+        <p>{{ "test is "  . session('test') }}</p>
+    </div>
+    @endif
+
     @guest
     @else
     @if (auth()->user()->isAdmin())
@@ -59,7 +65,17 @@
                             <input class="form-control col-lg-3 col-sm-6 mb-4" type="number" id="number" name="number" value="1">
                         </div>
 
-
+                        <?php 
+                            $check_out = true;
+                            foreach($used_to as $data){
+                                if($data->out_of_stock_id === $row['id']){
+                                    $check_out = false;
+                                }
+                            }
+                        ?>
+                        @if($check_out)
+                        <a href="{{ url('/out_of_stock/tell' , $row['id']) }}" class="btn btn-warning">แจ้งสินค้าหมด(+20point)</a>
+                        @endif
                         <div>
                             <input type="hidden" name="_method" value="POST" />
                             <button type="submit" class="btn btn-success">Add To Cart</button>
