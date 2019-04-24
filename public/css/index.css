@@ -19,7 +19,7 @@
 }
 
 body {
-  background: url('https://mdbootstrap.com/img/Photos/Others/images/91.jpg') no-repeat center center fixed;
+  background: url('https://cdn.pixabay.com/photo/2015/10/12/15/18/store-984393_960_720.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -87,4 +87,9 @@ section.pricing {
   .pricing .card:hover .btn {
     opacity: 1;
   }
+}
+
+.card-horizontal {
+  display: flex;
+  flex: 1 1 auto;
 }

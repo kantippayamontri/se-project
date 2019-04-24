@@ -81,12 +81,14 @@ Route::get('/user', 'HomeController@index_for_page');
 Route::patch('/user/update/{id}','HomeController@update');
 
 //product
-Route::get('/product', 'ProductController@index');
+Route::get('/product', 'ProductController@index')->name('product');
 Route::get('/product/add', 'ProductController@create');
 Route::post('/product/store', 'ProductController@store');
 Route::delete('/product/delete/{id}', 'ProductController@destroy');
 Route::get('/product/edit/{id}', 'ProductController@edit');
 Route::patch('/product/update/{id}','ProductController@update');
+Route::post('/search', 'ProductController@search');
+
 
 
 //Route for normal user

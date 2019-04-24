@@ -3,6 +3,10 @@
 @section('content')
 
 <h1>{{$user['name']}}</h1>
+
+
+
+
 <div class="container">
     <table class="table table-striped table-dark">
         <thead>

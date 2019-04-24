@@ -18,6 +18,8 @@ class CartController extends Controller
         //
 
         $cart = Cart::all()->toArray();
+        //$cart_count = count($cart);
+        //dd($cart_count);
         return view('cart.index', compact('cart'));
     }
 

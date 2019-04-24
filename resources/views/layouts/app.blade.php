@@ -24,6 +24,13 @@
 
 </head>
 
+<?php
+use App\Cart;
+
+$cart_count = count(Cart::all()->toArray());
+
+?>
+
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
@@ -61,7 +68,7 @@
                         @endif
                         @else
 
-                        
+
 
                         <li class="nav-item">
                             <a class="nav-link" href="/promotion">{{ __('Promotion') }}</a>
@@ -72,7 +79,7 @@
                         </li>
 
                         @if (auth()->user()->isAdmin())
-                        
+
                         <li class="nav-item">
                             <a class="nav-link" href="/out_of_stock">{{ __('Out of stock') }}</a>
                         </li>
@@ -82,7 +89,11 @@
                         </li>
                         @else
                         <li class="nav-item">
-                            <a class="nav-link" href="/cart">{{ __('Cart') }}</a>
+                            <a class="nav-link" href="/cart">{{ __('Cart') }}
+                                <span class="badge badge-pill badge-secondary">
+                                    {{$cart_count}}
+                                </span>
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="">{{Auth::user()->money}}</a>
