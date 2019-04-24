@@ -74,6 +74,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //user
+Route::get('/user/history/{id}', 'HomeController@history');
 Route::get('/user/profile', 'HomeController@profile')->name('profile');
 Route::get('/user/edit/{id}', 'HomeController@edit');
 Route::delete('/user/delete/{id}', 'HomeController@destroy');

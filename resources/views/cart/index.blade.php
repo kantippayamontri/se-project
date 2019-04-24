@@ -98,10 +98,10 @@
     @endif
     <form class="form-inline main-form " method="post" action="{{url('/coupon/check' , $total)}}" enctype="multipart/form-data">
         {{csrf_field()}}
-        <div class="form-group mx-sm-3 mb-2">
-            <label for="coupon" class="sr-only">Coupon</label>
+        <center><div class="form-group mx-sm-3 mb-2">
+            <label for="coupon" class="sr-auto">Coupon</label>
             <input type="text" class="form-control" id="coupon" placeholder="Coupon" name="coupon">
-        </div>
+        </div></center>
         <input type="hidden" name="_method" value="POST" />
         <button type="submit" class="btn btn-primary mb-2">Confirm</button>
     </form>
@@ -181,7 +181,7 @@
 <div class="row">
     <div class="col"></div>
     <div class="col">
-        <a href="{{ url('/history/store' , [$total ,$total_point,$coupon_id]) }}" class="btn btn-success">Check out</a>
+       <center> <a href="{{ url('/history/store' , [$total ,$total_point,$coupon_id]) }}" class="btn btn-success">Check out</a></center>
     </div>
     <div class="col"></div>
 </div>

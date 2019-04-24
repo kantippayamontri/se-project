@@ -22,11 +22,12 @@ class ProductController extends Controller
         //เข้าก่อน
         $currentuser = app('Illuminate\Contracts\Auth\Guard')->user();
         $product = Product::all()->toArray();
-        $used_to = Used_to::where('user_id', $currentuser->id)->get();
+       
         //dd($used_to);
         if (is_null(auth()->user()) || auth()->user()->isAdmin()) {
             return view('product', compact('product'));
-        } else {
+        } else { 
+            $used_to = Used_to::where('user_id', $currentuser->id)->get();
             return view('user.product', compact('product', 'used_to'));
         }
     }

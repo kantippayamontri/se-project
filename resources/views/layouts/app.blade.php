@@ -33,10 +33,10 @@ $cart_count = count(Cart::all()->toArray());
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    422 Shopping Mall
+                 <h4>422 Shopping Mall</h4>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -53,17 +53,17 @@ $cart_count = count(Cart::all()->toArray());
                         <!-- Authentication Links -->
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/product">{{ __('Product') }}</a>
+                        <h5><a class="nav-link" href="/product">{{ __('Product') }}</a></h5>
                         </li>
 
 
                         @guest
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                           <h5> <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></h5>
                         </li>
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                           <h5> <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></h5>
                         </li>
                         @endif
                         @else

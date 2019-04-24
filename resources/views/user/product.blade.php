@@ -5,9 +5,9 @@
 <div class="container">
 
     <!-- Page Heading -->
-    <h1 class="my-4 text-success">422 Shopping Mall
+    <h1 class="my-4"><font color="54F313">422 Shopping Mall
         <small>products</small>
-    </h1>
+    </font></h1>
 
     @if (session('success'))
     <div class="alert alert-success">

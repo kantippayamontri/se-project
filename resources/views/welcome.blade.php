@@ -12,25 +12,29 @@
         <div class="carousel-item active" style="background-image: url('picture/welcome/first.jpg')">
             <div class="carousel-caption d-none d-md-block">
                 <h2 class="display-4">
-                <font color="#0080ff">422 Shopping Mall</font>
+                <font color="10E9FB">422 Shopping Mall</font>
                 </h2>
                 <p class="lead">
-                <font color="#0080ff">Store for CPE</font> 
+                <font color="10E9FB">Store for CPE</font> 
                 </p>
             </div>
         </div>
         <!-- Slide Two - Set the background image for this slide in the line below -->
-        <div class="carousel-item" style="background-image: url('https://source.unsplash.com/bF2vsubyHcQ/1920x1080')">
+        <div class="carousel-item" style="background-image: url('https://tradeind.gov.tt/wp-content/uploads/2018/06/OE9TFP0.jpg')">
             <div class="carousel-caption d-none d-md-block">
-                <h2 class="display-4">Second Slide</h2>
-                <p class="lead">This is a description for the second slide.</p>
+                <h2 class="display-4">
+                    <font color="021D43">422 Shopping Mall</font></h2>
+                <p class="lead">
+                    <font color="021D43">Store for CPE</font></p>
             </div>
         </div>
         <!-- Slide Three - Set the background image for this slide in the line below -->
-        <div class="carousel-item" style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080')">
+        <div class="carousel-item" style="background-image: url('https://image.freepik.com/free-photo/smart-phone-with-white-screen-in-hand-on-blurred-in-shopping-mall-background-shopping-online-concept-shopping-by-smart-phone_1253-1430.jpg')">
             <div class="carousel-caption d-none d-md-block">
-                <h2 class="display-4">Third Slide</h2>
-                <p class="lead">This is a description for the third slide.</p>
+            <h2 class="display-4">
+                    <font color="58073F">422 Shopping Mall</font></h2>
+                <p class="lead">
+                    <font color="58073F">Store for CPE</font></p>
             </div>
         </div>
     </div>

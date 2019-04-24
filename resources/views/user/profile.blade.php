@@ -4,61 +4,53 @@
 
 <h1>{{$user['name']}}</h1>
 
+<style>
+    .card {
+        margin: 0 auto;
+        /* Added */
+        float: none;
+        /* Added */
+        margin-bottom: 10px;
+        /* Added */
+    }
+</style>
 
+    <div class="container ">
+        @if (session('success'))
+        <div class="alert alert-success">
+            <p>{{ session('success') }}</p>
+        </div>
+        @endif
+        <div class="row">
+            
+            <!-- Free Tier -->
+            <div class="col">
+                <div class="card mb-5 mb-lg-0">
+                    <div class="card-body ">
 
+                        <h6 class="card-price text-center">
+                            <img class="card-img-top" src="{{ url( 'picture/user/'.$user['picture'] ) }}" alt="" width="50px">
+                        </h6>
+                        <hr>
+                        <ul class="fa-ul"><h5><b>
+                            <li><span class="fa-li"><i class="fas fa-check"></i></span>{{'Email : '.$user['email']}}</li><br>
+                            <li><span class="fa-li"><i class="fas fa-check"></i></span>{{'Name : '.$user['name']}}</li><br>
+                            <li><span class="fa-li"><i class="fas fa-check"></i></span>{{'description : '.$user['description']}}</li><br>
+                            <li><span class="fa-li"><i class="fas fa-check"></i></span>{{'Money : '.$user['money']}}</li><br>
+                            <li><span class="fa-li"><i class="fas fa-check"></i></span>{{'Point : '.$user['point']}}</li></h5></b>
+                        </ul>
 
-<div class="container">
-    <table class="table table-striped table-dark">
-        <thead>
-            <tr>
-                <th scope="col">Time</th>
-                <th scope="col">Name</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">total_price</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($history as $row)
-            <tr>
-                <th scope="row">{{$row['time']}}</th>
-                <td>{{$row['name']}}</td>
-                <td>{{$row['quantity']}}</td>
-                <td>{{$row['total_price']}}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div>
-
-<div class="container">
-    <table class="table table-striped table-dark">
-        <thead>
-            <tr>
-                <th scope="col">Code</th>
-                <th scope="col">Name</th>
-                <th scope="col">picture</th>
-                <th scope="col">description</th>
-                <th scope="col">min_money</th>
-                <th scope="col">percent</th>
-                <th scope="col">discount</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($coupon as $row)
-            <tr>
-                <th scope="row">{{$row['code']}}</th>
-                <th scope="row">{{$row['name']}}</th>
-                <td>
-                    <img src="{{ url( 'picture/promotion/'.$row['picture'] ) }}" class="img-rounded " alt="{{$row['picture']}}" width="100px">
-                </td>
-                <td>{{$row['description']}}</td>
-                <td>{{$row['min_money']}}</td>
-                <td>{{$row['percent']}}</td>
-                <td>{{$row['discount']}}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div>
+                        <!-- <a href="#" class="btn btn-block btn-primary text-uppercase">Edit</a> -->
+                        <a href="{{ url('/user/edit' , $user['id']) }}" class="btn btn-warning btn-block text-uppercase">Edit</a>
+                        <a href="{{ url('/user/history' , $user['id']) }}" class="btn btn-success btn-block text-uppercase">History</a>
+                
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <!-- plus here -->
+        </div>
+    </div>
 
 @endsection

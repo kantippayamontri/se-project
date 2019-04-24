@@ -48,6 +48,15 @@ class HomeController extends Controller
         return view('user.profile' , compact('user' , 'history' , 'coupon'));
     }
 
+    public function history($id){
+        //dd($id);
+        $currentuser = app('Illuminate\Contracts\Auth\Guard')->user();
+        $user = User::find($currentuser->id)->toArray();
+        $history = History::where('user_id', $currentuser->id)->get();
+        $coupon = Coupon::where('user_id', $currentuser->id)->get();
+        return view('user.history' , compact('user' , 'history' , 'coupon'));
+    }
+
     public function index_for_page(){
         $user = User::all()->toArray();
         return view('user.index', compact('user'));
